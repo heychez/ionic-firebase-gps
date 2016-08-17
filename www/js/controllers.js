@@ -1,0 +1,54 @@
+angular.module('starter.controllers', [])
+
+.controller('DashCtrl', function($scope, $firebaseObject, $ionicPlatform, $cordovaGeolocation) {
+  var posOptions = {timeout: 10000, enableHighAccuracy: false};
+
+
+  $ionicPlatform.ready(function() {
+    setInterval(function () {
+      $cordovaGeolocation
+        .getCurrentPosition(posOptions)
+        .then(function (position) {
+          var lat  = position.coords.latitude;
+          var long = position.coords.longitude;
+
+          alert(lat + ", " + long);
+        }, function(err) {
+          alert(err);
+        });
+    }, 10000);
+  });
+  
+  /*setInterval(function () {
+    firebase.database().ref('coordenadas').push({
+        lat: 20,
+        lng : 30
+      });
+  }, 5000);*/
+    
+})
+
+.controller('ChatsCtrl', function($scope, Chats) {
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
+
+  $scope.chats = Chats.all();
+  $scope.remove = function(chat) {
+    Chats.remove(chat);
+  };
+})
+
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+  $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('AccountCtrl', function($scope) {
+  $scope.settings = {
+    enableFriends: true
+  };
+});

@@ -1,0 +1,13 @@
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#master",
+    "ionic-platform-web-client": "^0.7.1"
+  },
+  "dependencies": {
+    "firebase": "^3.2.1",
+    "angularfire": "^2.0.1",
+    "ngCordova": "^0.1.27-alpha"
+  }
+}
