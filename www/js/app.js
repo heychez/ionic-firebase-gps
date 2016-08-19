@@ -23,7 +23,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'firebase', 'starter.controller
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
+    cordova.plugins.backgroundMode.setDefaults({ text:'Doing heavy tasks.'});
+    cordova.plugins.backgroundMode.enable();
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
